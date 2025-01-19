@@ -101,7 +101,7 @@ jobs:
 
     - name: fix kernel source
       run: |
-         apt install dos2unix -y
+         sudo apt install dos2unix -y
          find -name Kconfig |xargs dos2unix
 
     - name: Download source boot image

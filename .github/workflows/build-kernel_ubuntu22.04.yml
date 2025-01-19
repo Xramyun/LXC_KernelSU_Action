@@ -99,6 +99,11 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
 
+    - name: fix kernel source
+      run: |
+         apt install dos2unix -y
+         find -name Kconfig |xargs dos2unix
+
     - name: Download source boot image
       if: env.BUILD_BOOT_IMG == 'true'
       run: |
